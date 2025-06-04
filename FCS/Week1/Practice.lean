@@ -1,7 +1,7 @@
 namespace Learn
 
 -- Define functions with the `def` keyword
--- Unlike most language, we do not need `return` statements:
+-- Unlike most languages, we do not need `return` statements:
 -- the body of the function is already a value to be returned,
 -- akin to mathematical "f(x) = x²"
 def double(n : Nat): Nat := n * 2
