@@ -1,0 +1,10 @@
+name = "FCS"
+version = "0.1.0"
+defaultTargets = ["fcs"]
+
+[[lean_lib]]
+name = "FCS"
+
+[[lean_exe]]
+name = "fcs"
+root = "Main"
