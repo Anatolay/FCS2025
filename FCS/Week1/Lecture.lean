@@ -9,6 +9,12 @@ inductive Nat : Type where
   | succ : (n : Nat) → Nat
 open Nat
 
+instance : OfNat Nat 0 where
+  ofNat := zero
+
+instance [OfNat Nat n] : OfNat Nat (n + 1) where
+  ofNat := succ (inferInstance : OfNat Nat n).ofNat
+
 def one := succ zero
 def two := succ (succ zero)
 def three := succ two
@@ -39,8 +45,8 @@ def addNat
     | zero => m
     | succ k => succ (addNat k m)
 
+infix:60 " +ℕ " => addNat
 #eval addNat (succ zero) (succ zero) -- Learn.Nat.succ (Learn.Nat.succ (Learn.Nat.zero))
-infix:30 " +ℕ " => addNat
 
 
 inductive NatEq : Nat → Nat → Type where
@@ -48,7 +54,7 @@ inductive NatEq : Nat → Nat → Type where
   | succEq : NatEq n m → NatEq (succ n) (succ m)
 open NatEq
 
-infix:20 " =ℕ " => NatEq
+infix:10 " =ℕ " => NatEq
 
 def oneEqOne
   : succ zero =ℕ succ zero

@@ -9,7 +9,7 @@ def multNat
   : Nat
   := sorry
 
-infix:30 " *ℕ " => multNat
+infix:70 " *ℕ " => multNat
 -- #eval succ (succ zero) *ℕ succ (succ zero)
 
 -- nᵐ
@@ -24,12 +24,15 @@ inductive LessOrEqNat : Nat → Nat → Type where
 
 inductive LessThanNat : Nat → Nat → Type where
 
-notation:10 l:10 " <ℕ " r:11 => (LessThanNat l r)
-notation:10 l:10 " <=ℕ " r:11 => (LessOrEqNat l r)
+infix:50 " <ℕ " => LessThanNat
+infix:50 " <=ℕ " => LessOrEqNat
 
 
 inductive Int where
 open Int
+
+deriving instance Repr for Nat, Int
+-- #eval pos (succ zero)
 
 inductive IntEq : Int → Int → Type where
 open IntEq
@@ -51,12 +54,6 @@ def isZeroInt
   : Bool
   := sorry
 
-def intEqTransitive
-  (nm : n =ℤ m)
-  (mk : m =ℤ k)
-  : n =ℤ k
-  := sorry
-
 def inject
   (n : Nat)
   : Int
@@ -67,14 +64,14 @@ def addInt
   : Int
   := sorry
 
-infix:30 " +ℤ " => addInt
+infix:60 " +ℤ " => addInt
 
 def multInt
   (n m : Int)
   : Int
   := sorry
 
-infix:30 " *ℤ " => multInt
+infix:70 " *ℤ " => multInt
 
 inductive Rational where
 
