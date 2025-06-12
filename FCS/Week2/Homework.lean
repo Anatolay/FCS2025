@@ -30,49 +30,27 @@ def orToImplication
   : X → Y
   := sorry
 
-def XOR (A B: Type) := False
-
 def xorImpliesOr
-  (xor : XOR A B)
+  (xor : (A ∧ ¬B) ∨ (B ∧ ¬A))
   : A ∨ B
   := sorry
 
-def ExcludedMiddle := False
-
-def negateExists
-  (A : Type)
-  (P : A → Type)
-  (ne : ¬ (∃ x, P x))
-  : ∀ x, ¬(P x)
+-- Curcly braces "{" and "}" make type `A`, `B`, and `X` implicit
+-- Thus, when you call `andToOr`, instead of passing the types
+-- as in `andToOr A B X someAnd`, you can simply write `andToOr someAnd`
+def andToOr
+  {A B X : Type}
+  (axAndBx : (A → X) ∧ (B → X))
+  : (A ∨ B) → X
   := sorry
 
-/-
-Not provable:
-def notForAll
-  (A : Type)
-  (P : A → Type)
-  (nfa : ¬ (∀ x : A, P x))
-  : ∃ x : A, ¬ (P x)
-  := sorry
--/
-
-def threeByTwo
-  : 2 *ℕ 3 ≡ 6
+def orToAnd
+  {A B X : Type}
+  (orToX : (A ∨ B) → X)
+  : (A → X) ∧ (B → X)
   := sorry
 
-def addNatAssoc
-  : (x +ℕ y) +ℕ z ≡ x +ℕ (y +ℕ z)
-  := sorry
-
-
-def exclMidImpliesOr
-  (em : ExcludedMiddle)
-  : P ∨ ¬P
-  -- := em (P ∨ ¬P) (λ np => let npnnp := deMorgan2 np; npnnp.second npnnp.first)
-  := sorry
-
-def deMorgan4
-  (em : ExcludedMiddle)
-  (p : ¬(A ∧ B))
-  : ¬A ∨ ¬B
-  := sorry
+def andIffOr
+  {A B X : Type}
+  : (A → X) ∧ (B → X) <=> (A ∨ B) → X
+  := And.mk sorry sorry
