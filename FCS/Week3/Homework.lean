@@ -50,6 +50,11 @@ def twoLeThree
   : LE 2 3
   := sorry
 
+def leqLeft
+  (ex : ∃ k, k +ℕ n ≡ m)
+  : LEQ n m
+  := sorry
+
 def LeImpliesLeq
   (le : LE n m)
   : LEQ n m
