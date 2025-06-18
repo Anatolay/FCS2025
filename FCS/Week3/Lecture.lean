@@ -10,11 +10,11 @@ open Nat
 
 
 def aImpliesAorB
-  : A → A ∨ B
+  : A → (A ∨ B)
   := sorry
 
 def bImpliesAorB
-  : B → A ∨ B
+  : B → (A ∨ B)
   := sorry
 
 def andSymm
