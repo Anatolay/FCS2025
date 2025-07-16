@@ -139,25 +139,30 @@ def diamond_implies_semidiamond'
   {r : A → A → Type}
   (diamond : Diamond r)
   (a b c : A)
-  (ab : RTC r a b)
-  (ac : r a c)
-  : ∃ d, RTC r b d ∧ RTC r c d
+  (ab : RTC r a b) -- a ⇝* b
+  (ac : r a c)     -- a ⇝  c
+  : ∃ d, RTC r b d ∧ RTC r c d -- b ⇝* d  AND  c ⇝* d
   := sorry
 
-def Idempotent (f : A → A) := { x : A } → f (f x) ≡ f x
 
 def diamond_implies_semidiamond
   (diamond : Diamond r)
   : SemiDiamond r
   := λ ab ac => diamond_implies_semidiamond' diamond _ _ _ ab ac
 
+def rtc_trans
+  (red₁ : RTC r x y) -- x ⇝* y
+  (red₂ : RTC r y z) -- y ⇝* z
+  : RTC r x z     -- => x ⇝* z
+  := sorry
+
 def diamond_implies_confluence'
   {r : A → A → Type}
   (diamond : Diamond r)
   (a b c : A)
-  (ab : RTC r a b)
-  (ac : RTC r a c)
-  : ∃ d, RTC r b d ∧ RTC r c d
+  (ab : RTC r a b) -- a ⇝* b
+  (ac : RTC r a c) -- a ⇝* c
+  : ∃ d, RTC r b d ∧ RTC r c d -- b ⇝* d  AND  c ⇝* d
   := sorry
 
 def diamond_implies_confluence
